@@ -26,6 +26,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SafeArea(
+        minimum: EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           mainAxisSize: mainAxisSize,
           mainAxisAlignment: mainAxisAlignment,
