@@ -11,6 +11,11 @@ class Body extends StatelessWidget {
     this.textBaseline,
     this.verticalDirection = VerticalDirection.down,
     this.spacing = 0.0,
+    this.safeAreaTop = true,
+    this.safeAreaRight = true,
+    this.safeAreaBottom = true,
+    this.safeAreaLeft = true,
+    this.safeAreaMinimum = 10,
   });
 
   final List<Widget> children;
@@ -21,12 +26,24 @@ class Body extends StatelessWidget {
   final TextBaseline? textBaseline;
   final VerticalDirection verticalDirection;
   final double spacing;
+  final bool safeAreaTop;
+  final bool safeAreaRight;
+  final bool safeAreaBottom;
+  final bool safeAreaLeft;
+  final double safeAreaMinimum;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SafeArea(
-        minimum: EdgeInsets.symmetric(horizontal: 10),
+        top: safeAreaTop,
+        right: safeAreaRight,
+        bottom: safeAreaBottom,
+        left: safeAreaLeft,
+        minimum: EdgeInsets.only(
+          right: safeAreaRight ? safeAreaMinimum : 0,
+          left: safeAreaLeft ? safeAreaMinimum : 0,
+        ),
         child: Column(
           mainAxisSize: mainAxisSize,
           mainAxisAlignment: mainAxisAlignment,
